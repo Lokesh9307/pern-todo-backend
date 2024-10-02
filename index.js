@@ -21,6 +21,10 @@ app.post("/todos", async (req, res) => {
     }
 })
 
+app.get("/",(req,res)=>{
+    res.send("Server is running...");
+    res.status(200)
+})
 
 // get All todo
 app.get("/todos", async (req, res) => {
