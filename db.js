@@ -5,7 +5,6 @@ const pool = new Pool({
     host:"dpg-cruont0gph6c73dm8si0-a.oregon-postgres.render.com",
     database:"todo_database_qy6s",
     port:5432,
-    ssl: { rejectUnauthorized: false }
 })
 
 
