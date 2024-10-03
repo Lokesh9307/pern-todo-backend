@@ -10,6 +10,24 @@ const pool = new Pool({
         rejectUnauthorized: false  // Accept self-signed certificates (optional, depending on your environment)
     }
 })
+pool.connect((err, client, release) => {
+    if (err) {
+        console.error('Error acquiring client', err.stack);
+        return;
+    }
 
+    console.log('Connected to PostgreSQL');
+
+    // Here you can perform database operations
+    client.query('SELECT NOW()', (err, res) => {
+        release(); // Release the client back to the pool
+
+        if (err) {
+            console.error('Error executing query', err.stack);
+        } else {
+            console.log('Current time:', res.rows[0]);
+        }
+    });
+});
 
 module.exports = pool;
